@@ -24,9 +24,10 @@ new Vue({
             this.turn = 'monster';
         },
         giveUp: function(){
-            alert("Giving up already? Let's restart the game.")
-            this.inGame = false;
-            this.resetGame();
+            if (confirm("Giving up already?")){
+                this.inGame = false;
+                this.resetGame();
+            }
         },
         log: function(type, action, total){
             let msg = '';
