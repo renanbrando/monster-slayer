@@ -19,8 +19,15 @@ new Vue({
             this.turn = 'monster';
         },
         heal: function(){
-            this.playerHealth+=15;
-            this.log("player", "heal", 15);
+            if (this.playerHealth >= 100){
+                this.log("player", "heal", 0);
+            } else if ((this.playerHealth + 15) > 100){
+                this.log("player", "heal", 100-this.playerHealth);
+                this.playerHealth=100;
+            } else {
+                this.playerHealth+=15;
+                this.log("player", "heal", 15);
+            }
             this.turn = 'monster';
         },
         giveUp: function(){
